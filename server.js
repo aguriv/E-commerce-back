@@ -28,5 +28,5 @@ tweetRoutes(app);
 userRoutes(app);
 
 app.listen(process.env.APP_PORT, () => {
-  console.log("ingresar a ");
+  console.log("Estas llegando a buen puerto");
 });

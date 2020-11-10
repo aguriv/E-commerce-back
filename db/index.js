@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 mongoose.connect(
-  `mongodb+srv://root:${process.env.DB_PASSWORD}@ejercicio-twitter.ojxxy.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`
+  `mongodb+srv://root:${process.env.DB_PASSWORD}@cluster0.uxv9g.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`
 );
 mongoose.set("useFindAndModify", false);
 const UserModel = require("./userModel");
