@@ -1,22 +1,7 @@
-const { mongoose, User, Tweet } = require("../db");
+/* const { mongoose, User, Product } = require("../db");
 
 module.exports = {
-  following: async (req, res) => {
-    await User.findById(req.user.sub, (err, user) => {
-      if (err) {
-        return err;
-      }
-      Tweet.find({ author: { $in: user.following } })
-        .populate("author", "name lastname username image")
-        .sort({ date: -1 })
-        .exec((err, tweets) => {
-          if (err) {
-            return err;
-          }
-          res.json(tweets);
-        });
-    });
-  },
+  
 
   saveTweet: async (req, res) => {
     const tweet = new Tweet({
@@ -66,3 +51,4 @@ module.exports = {
     res.json("Tweet deleted");
   },
 };
+ */

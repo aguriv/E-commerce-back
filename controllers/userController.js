@@ -10,25 +10,30 @@ module.exports = {
     const user = await new User({
       name: req.body.name,
       lastname: req.body.lastname,
+      email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      description: req.body.description,
-      email: req.body.email,
-      image: req.body.image,
+      address: req.body.address,
+      phone: req.body.phone,
     });
     user.tokens = [createToken(user.id)];
-    user.save().then(
-      res.json({
-        following: user.following.length,
-        followers: user.followers.length,
-        name: user.name,
-        lastname: user.lastname,
-        username: user.username,
-        usertoken: user.tokens[0],
-        email: user.email,
-        image: user.image,
-      })
-    );
+    user
+      .save()
+      .then(
+        res.json({
+          name: user.name,
+          lastname: user.lastname,
+          email: user.email,
+          username: user.username,
+          usertoken: user.tokens[0],
+          address: user.address,
+          phone: user.phone,
+        }) //res.json(user)
+      )
+      .catch((error) => {
+        console.log(error);
+        res.status(400);
+      });
   },
 
   logIn: async (req, res) => {
@@ -46,15 +51,13 @@ module.exports = {
       user.save();
 
       res.json({
-        following: user.following.length,
-        followers: user.followers.length,
         name: user.name,
         lastname: user.lastname,
+        email: user.email,
         username: user.username,
         usertoken: newToken,
-        description: user.description,
-        email: user.email,
-        image: user.image,
+        address: user.address,
+        phone: user.phone,
       });
     } catch (err) {
       console.log("Something failed", err);
@@ -81,71 +84,5 @@ module.exports = {
           tweets: user.tweets.reverse(),
         });
       });
-  },
-
-  findUser: async (req, res) => {
-    await User.findOne({ username: req.params.username })
-      .populate("tweets")
-      .exec((err, user) => {
-        if (err) {
-          return err;
-        }
-        res.json({
-          following: user.following.length,
-          followers: user.followers.length,
-          id: user.id,
-          name: user.name,
-          lastname: user.lastname,
-          username: user.username,
-          description: user.description,
-          email: user.email,
-          image: user.image,
-          tweets: user.tweets.reverse(),
-        });
-      });
-  },
-
-  followUser: async (req, res) => {
-    await User.findById(req.user.sub, (err, user) => {
-      const foundObjId = user.following.find(
-        (e) => e.toString() === req.params._id.toString()
-      );
-      if (foundObjId === undefined) {
-        user.following.push(req.params._id);
-        user.save();
-      } else {
-        User.updateOne(
-          { _id: req.user.sub },
-          { $pull: { following: req.params._id } },
-          { safe: true, multi: true },
-          (err, user) => {
-            if (err) {
-              return err;
-            }
-          }
-        );
-      }
-    });
-    await User.findById(req.params._id, (err, user) => {
-      const foundObjId = user.followers.find(
-        (e) => e.toString() === req.user.sub.toString()
-      );
-      if (foundObjId === undefined) {
-        user.followers.push(req.user.sub);
-        user.save();
-      } else {
-        User.updateOne(
-          { _id: req.params._id },
-          { $pull: { followers: req.user.sub } },
-          { safe: true, multi: true },
-          (err, user) => {
-            if (err) {
-              return err;
-            }
-          }
-        );
-      }
-    });
-    res.json("User followed");
   },
 };

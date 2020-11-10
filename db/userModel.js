@@ -9,11 +9,9 @@ module.exports = (mongoose, Schema) => {
     username: { type: String, required: true },
     password: { type: String, required: true },
     tokens: [],
-    description: String,
-    image: String,
-    tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-    followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    address: { type: String },
+    phone: { type: String },
+    orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
   });
 
   UserSchema.pre("save", function (next) {
