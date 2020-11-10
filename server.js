@@ -6,7 +6,6 @@ const path = require("path");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const tweetRoutes = require("./routes/tweetRoutes");
 const userRoutes = require("./routes/userRoutes");
 const db = require("./db");
 
@@ -24,7 +23,6 @@ app.use(
   })
 );
 
-tweetRoutes(app);
 userRoutes(app);
 
 app.listen(process.env.APP_PORT, () => {

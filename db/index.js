@@ -5,11 +5,9 @@ mongoose.connect(
 );
 mongoose.set("useFindAndModify", false);
 const UserModel = require("./userModel");
-const TweetModel = require("./tweetModel");
 const { Seed } = require("../seeder");
 
 const User = UserModel(mongoose, Schema);
-const Tweet = TweetModel(mongoose, Schema);
 
 const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
@@ -20,7 +18,6 @@ db.once("open", (e) =>
 module.exports = {
   mongoose,
   User,
-  Tweet,
 };
 
 /* Seed(mongoose, User, Tweet); */

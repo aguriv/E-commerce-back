@@ -6,7 +6,7 @@ module.exports = (mongoose, Schema) => {
     name: { type: String, required: true },
     lastname: { type: String, required: true },
     email: { type: String, required: true },
-    username: { type: String, required: true },
+    username: { type: String },
     password: { type: String, required: true },
     tokens: [],
     address: { type: String },
