@@ -15,4 +15,8 @@ module.exports = {
         });
       });
   },
+  listCategories: async (req, res) => {
+    const categories = await Category.find();
+    res.json(categories);
+  },
 };
