@@ -1,9 +1,41 @@
-/* const { mongoose, User, Product } = require("../db");
+const { mongoose, User, Product, Category } = require("../db");
 
 module.exports = {
-  
+  listProducts: async (req, res) => {
+    const products = await products.find();
+    res.json(products);
+  },
 
-  saveTweet: async (req, res) => {
+  saveProduct: async (req, res) => {
+    const category = await Category.findOne({ name: req.body.category });
+
+    const product = await new Product({
+      name: req.body.name,
+      description: req.body.description,
+      image: req.body.image,
+      price: req.body.price,
+      stock: req.body.stock,
+      category: category,
+      featured: req.body.featured,
+      slug: req.body.slug,
+      addedBy: req.body.addedBy,
+    });
+    product
+      .save()
+      .then(async (product) => {
+        category.products.push(product);
+        await category.save();
+        res.status(200).json(product);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({
+          error: err,
+        });
+      });
+  },
+
+  /*   saveTweet: async (req, res) => {
     const tweet = new Tweet({
       text: req.body.text,
       author: mongoose.Types.ObjectId(req.user.sub),
@@ -11,11 +43,7 @@ module.exports = {
     tweet.save();
     await User.findById(req.user.sub, (err, user) => {
       user.tweets.push(tweet);
-      user.save();
-    });
-    res.json("Tweet saved");
-  },
-
+  /* 
   likeTweet: async (req, res) => {
     await Tweet.findById(req.params._id, (err, tweet) => {
       const foundObjId = tweet.likes.find(
@@ -49,6 +77,5 @@ module.exports = {
       }
     });
     res.json("Tweet deleted");
-  },
+  }, */
 };
- */

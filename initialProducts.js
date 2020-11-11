@@ -9,7 +9,7 @@ const products = [
     price: 10,
     stock: 5,
     category: "Limpieza",
-    feature: true,
+    featured: true,
     slug: "lavarropas-blanco",
   },
   {

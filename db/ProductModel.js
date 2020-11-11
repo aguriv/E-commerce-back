@@ -6,11 +6,11 @@ module.exports = (mongoose, Schema) => {
     description: { type: String, required: true },
     image: { type: String },
     price: { type: Number, required: true },
-    stock: { type: Number, required: true },
-    category: { type: String, required: true },
+    stock: { type: Number },
+    category: { type: Schema.Types.ObjectId, ref: "Category" },
     featured: { type: Boolean },
     slug: { type: String },
-
+    addedBy: { type: Schema.Types.ObjectId, ref: "User" },
     createdAt: { type: Date, default: Date.now },
   });
 

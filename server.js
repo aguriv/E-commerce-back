@@ -7,6 +7,9 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+
 const db = require("./db");
 
 app.use(express.json());
@@ -24,6 +27,8 @@ app.use(
 );
 
 userRoutes(app);
+productRoutes(app);
+categoryRoutes(app);
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Estas llegando a buen puerto");
