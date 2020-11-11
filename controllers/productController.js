@@ -2,37 +2,41 @@ const { mongoose, User, Product, Category } = require("../db");
 
 module.exports = {
   listProducts: async (req, res) => {
-    const products = await products.find();
+    const products = await Product.find();
     res.json(products);
   },
 
   saveProduct: async (req, res) => {
     const category = await Category.findOne({ name: req.body.category });
-
-    const product = await new Product({
-      name: req.body.name,
-      description: req.body.description,
-      image: req.body.image,
-      price: req.body.price,
-      stock: req.body.stock,
-      category: category,
-      featured: req.body.featured,
-      slug: req.body.slug,
-      addedBy: req.body.addedBy,
-    });
-    product
-      .save()
-      .then(async (product) => {
-        category.products.push(product);
-        await category.save();
-        res.status(200).json(product);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json({
-          error: err,
-        });
+    if (category !== null) {
+      const product = await new Product({
+        name: req.body.name,
+        description: req.body.description,
+        image: req.body.image,
+        price: req.body.price,
+        stock: req.body.stock,
+        category: category,
+        featured: req.body.featured,
+        slug: req.body.slug,
+        addedBy: req.body.addedBy,
       });
+      product
+        .save()
+        .then(async (product) => {
+          category.products.push(product);
+          await category.save();
+          res.status(200).json(product);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(400).json({
+            error: err,
+          });
+        });
+    } else {
+      console.log("no");
+      res.status(400).json("Ingrese una categoria valida ney");
+    }
   },
 
   /*   saveTweet: async (req, res) => {
