@@ -7,8 +7,8 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const userRoutes = require("./routes/userRoutes");
-const productRoutes = require("./routes/productRoutes");
-const categoryRoutes = require("./routes/categoryRoutes");
+const publicRoutes = require("./routes/publicRoutes");
+const privateRoutes = require("./routes/privateRoutes");
 
 const db = require("./db");
 
@@ -27,8 +27,8 @@ app.use(
 );
 
 userRoutes(app);
-productRoutes(app);
-categoryRoutes(app);
+publicRoutes(app);
+privateRoutes(app);
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Estas llegando a buen puerto");
