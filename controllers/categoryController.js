@@ -44,4 +44,14 @@ module.exports = {
         });
       });
   },
+
+  update: async (req, res) => {
+    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    await category.save();
+
+    res.status(200).json(category);
+  },
 };
