@@ -58,6 +58,7 @@ module.exports = {
         usertoken: newToken,
         address: user.address,
         phone: user.phone,
+        admin: user.admin,
       });
     } catch (err) {
       console.log("Something failed", err);
