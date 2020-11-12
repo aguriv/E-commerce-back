@@ -10,6 +10,8 @@ module.exports = function privateRoutes(app) {
   app.post("/api/v1/categories", categoryController.saveCategory);
   app.delete("/api/v1/categories/:id", categoryController.delete);
 
+  app.put("/api/v1/categories/:id", categoryController.update);
+
   /* RUTAS PRODUCTS */
   app.use(jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }));
 
