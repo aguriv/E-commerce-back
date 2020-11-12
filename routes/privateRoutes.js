@@ -14,4 +14,5 @@ module.exports = function privateRoutes(app) {
 
   app.post("/api/v1/products", productController.saveProduct);
   app.delete("/api/v1/products/:id", productController.delete);
+  app.put("/api/v1/products/:id", productController.update);
 };
