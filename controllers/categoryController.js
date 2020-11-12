@@ -9,6 +9,7 @@ module.exports = {
   saveCategory: async (req, res) => {
     const category = await new Category({
       name: req.body.name,
+      slug: req.body.slug,
     });
     category
       .save()

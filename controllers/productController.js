@@ -39,6 +39,21 @@ module.exports = {
     }
   },
 
+  delete: async (req, res) => {
+    const slug = req.params.slug;
+    await Product.findOneAndRemove({ slug: slug })
+      .then(
+        res.status(200).json("El producto fue eliminado")
+        /*  console.log(product) */
+      )
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({
+          error: err,
+        });
+      });
+  },
+
   /*   saveTweet: async (req, res) => {
     const tweet = new Tweet({
       text: req.body.text,
