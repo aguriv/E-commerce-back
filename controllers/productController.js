@@ -44,15 +44,11 @@ module.exports = {
     await Product.findByIdAndRemove(req.params._id);
  */
 
-    const product = await Product.findById(req.params._id);
-    console.log(product, "log de prueba");
-    const category = await Category.findById({ _id: product.category });
-    category.products = category.products.filter((item) => {
-      item !== product;
-      console.log(item);
-    });
-    category.save();
-    await Product.findByIdAndRemove(req.params._id)
+    const product = await Product.findById(req.params.id);
+    const category = await Category.findById(product.category);
+
+    await category.update({ $pull: { products: req.params.id } });
+    await Product.findByIdAndRemove(req.params.id)
       .then(
         res.status(200).json("El producto fue eliminado")
         /*  console.log(product) */

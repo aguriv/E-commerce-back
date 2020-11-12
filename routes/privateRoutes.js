@@ -13,5 +13,5 @@ module.exports = function privateRoutes(app) {
   app.use(jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }));
 
   app.post("/api/v1/products", productController.saveProduct);
-  app.delete("/api/v1/products/:_id", productController.delete);
+  app.delete("/api/v1/products/:id", productController.delete);
 };
