@@ -65,4 +65,14 @@ module.exports = {
       res.status(500).json({ message: "Something failed on server side" });
     }
   },
+
+  list: async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+  },
+
+  delete: async (req, res) => {
+    await User.findByIdAndRemove(req.params.id);
+    res.status(200).json("El usuario fue eliminado");
+  },
 };
