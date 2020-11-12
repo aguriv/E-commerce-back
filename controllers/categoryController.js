@@ -6,6 +6,11 @@ module.exports = {
     res.json(categories);
   },
 
+  listOne: async (req, res) => {
+    const categories = await Category.findOne(req.params).populate("products");
+    res.json(categories);
+  },
+
   saveCategory: async (req, res) => {
     const category = await new Category({
       name: req.body.name,

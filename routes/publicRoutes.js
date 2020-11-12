@@ -15,6 +15,7 @@ module.exports = function publicRoutes(app) {
 
   /* RUTAS CATEGORIES */
   app.get("/api/v1/categories", categoryController.listCategories);
+  app.get("/api/v1/categories/:slug", categoryController.listOne);
 
   /* RUTAS PRODUCTS */
   app.get("/api/v1/products", productController.listProducts);
