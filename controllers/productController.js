@@ -40,20 +40,16 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    /* 
-    await Product.findByIdAndRemove(req.params._id);
- */
-
-    const product = await Product.findById(req.params.id);
+    /* await Product.findByIdAndRemove(req.params._id);*/ const product = await Product.findById(
+      req.params.id
+    );
     const category = await Category.findById(product.category);
-
     await category.update({ $pull: { products: req.params.id } });
     await Product.findByIdAndRemove(req.params.id)
       .then(
         res.status(200).json("El producto fue eliminado")
         /*  console.log(product) */
       )
-
       .catch((err) => {
         console.log(err);
         res.status(400).json({

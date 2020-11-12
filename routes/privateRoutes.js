@@ -8,6 +8,7 @@ module.exports = function privateRoutes(app) {
   app.use(jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }));
 
   app.post("/api/v1/categories", categoryController.saveCategory);
+  app.delete("/api/v1/categories/:id", categoryController.delete);
 
   /* RUTAS PRODUCTS */
   app.use(jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }));

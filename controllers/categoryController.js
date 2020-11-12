@@ -1,4 +1,4 @@
-const { Category } = require("../db");
+const { Category, Product } = require("../db");
 
 module.exports = {
   listCategories: async (req, res) => {
@@ -24,19 +24,12 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    /* 
-    await Product.findByIdAndRemove(req.params._id);
- */
-
-    const category = await Category.findById(req.params.id);
-    const product = await Product.findById(category.product);
-    await product.update({ $pull: { products: req.params.id } });
+    await Product.deleteMany({ category: req.params.id });
     await Category.findByIdAndRemove(req.params.id)
       .then(
         res.status(200).json("La categoría fue eliminada")
         /*  console.log(product) */
       )
-
       .catch((err) => {
         console.log(err);
         res.status(400).json({
@@ -45,3 +38,6 @@ module.exports = {
       });
   },
 };
+/* 
+    await Product.findByIdAndRemove(req.params._id);
+ */
