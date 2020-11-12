@@ -11,6 +11,7 @@ module.exports = {
       name: req.body.name,
       slug: req.body.slug,
     });
+    //Category.find({ name: req.body.category });
     category
       .save()
       .then(res.status(200).json(category))
