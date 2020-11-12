@@ -12,6 +12,7 @@ module.exports = (mongoose, Schema) => {
     address: { type: String },
     phone: { type: String },
     orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
+    admin: { type: Boolean },
   });
 
   UserSchema.pre("save", function (next) {

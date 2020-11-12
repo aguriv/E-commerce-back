@@ -58,31 +58,11 @@ module.exports = {
         usertoken: newToken,
         address: user.address,
         phone: user.phone,
+        admin: user.admin,
       });
     } catch (err) {
       console.log("Something failed", err);
       res.status(500).json({ message: "Something failed on server side" });
     }
-  },
-
-  findProfile: async (req, res) => {
-    await User.findById(req.user.sub, (err, user) => {
-      if (err) {
-        return err;
-      }
-    })
-      .populate("tweets")
-      .exec((err, user) => {
-        if (err) {
-          return err;
-        }
-        const newToken = createToken(user.id);
-        user.tokens.push(newToken);
-        user.save();
-
-        res.json({
-          tweets: user.tweets.reverse(),
-        });
-      });
   },
 };
