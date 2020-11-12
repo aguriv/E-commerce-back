@@ -2,7 +2,7 @@ const { mongoose, User, Product, Category } = require("../db");
 
 module.exports = {
   listProducts: async (req, res) => {
-    const products = await Product.find();
+    const products = await Product.find(req.query).populate("category");
     res.json(products);
   },
 

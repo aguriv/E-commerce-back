@@ -2,7 +2,7 @@ const { Category } = require("../db");
 
 module.exports = {
   listCategories: async (req, res) => {
-    const categories = await Category.find();
+    const categories = await Category.find().populate("products");
     res.json(categories);
   },
 

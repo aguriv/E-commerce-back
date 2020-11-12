@@ -9,7 +9,7 @@ module.exports = (mongoose, Schema) => {
     stock: { type: Number },
     category: { type: Schema.Types.ObjectId, ref: "Category" },
     featured: { type: Boolean },
-    slug: { type: String },
+    slug: { type: String, unique: true },
     addedBy: { type: Schema.Types.ObjectId, ref: "User" },
     createdAt: { type: Date, default: Date.now },
   });
