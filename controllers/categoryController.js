@@ -22,7 +22,13 @@ module.exports = {
         });
       });
   },
-
+  update: async (req, res) => {
+    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    await category.save();
+    res.status(200).json(category);
+  },
   delete: async (req, res) => {
     await Product.deleteMany({ category: req.params.id });
     await Category.findByIdAndRemove(req.params.id)
@@ -37,17 +43,7 @@ module.exports = {
         });
       });
   },
-
-  update: async (req, res) => {
-    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-
-    await category.save();
-
-    res.status(200).json(category);
-  },
 };
 /* 
-    await Product.findByIdAndRemove(req.params._id);
+  await Product.findByIdAndRemove(req.params._id);
  */
