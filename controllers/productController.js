@@ -63,21 +63,38 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        description: req.body.description,
+        image: req.body.image,
+        price: req.body.price,
+        stock: req.body.stock,
+        featured: req.body.featured,
+        slug: req.body.slug,
+        addedBy: req.body.addedBy,
+      },
+      { new: true }
+    );
+
+    await product.save();
+
+    res.status(200).json(product);
+  },
+
+  /*   update: async (req, res) => {
     const category = await Category.findOne({ name: req.body.category });
     req.body.category = category;
     if (category === null)
       return res.status(400).json("Ingrese una categoria valida ney");
-
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-
-    category.products.push(product);
-
+        category.products.push(product); 
     await category.save();
-
     res.status(200).json(product);
-  },
+  }, */
 
   /*   saveTweet: async (req, res) => {
     const tweet = new Tweet({
