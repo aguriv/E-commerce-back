@@ -40,12 +40,24 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    const slug = req.params.slug;
-    await Product.findOneAndRemove({ slug: slug })
+    /* 
+    await Product.findByIdAndRemove(req.params._id);
+ */
+
+    const product = await Product.findById(req.params._id);
+    console.log(product, "log de prueba");
+    const category = await Category.findById({ _id: product.category });
+    category.products = category.products.filter((item) => {
+      item !== product;
+      console.log(item);
+    });
+    category.save();
+    await Product.findByIdAndRemove(req.params._id)
       .then(
         res.status(200).json("El producto fue eliminado")
         /*  console.log(product) */
       )
+
       .catch((err) => {
         console.log(err);
         res.status(400).json({
