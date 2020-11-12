@@ -22,4 +22,5 @@ module.exports = function privateRoutes(app) {
   /* RUTAS USERS */
   app.get("/api/v1/users", userController.list);
   app.delete("/api/v1/users/:id", userController.delete);
+  app.put("/api/v1/users/:id", userController.update);
 };

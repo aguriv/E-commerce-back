@@ -75,4 +75,16 @@ module.exports = {
     await User.findByIdAndRemove(req.params.id);
     res.status(200).json("El usuario fue eliminado");
   },
+
+  update: async (req, res) => {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { admin: req.body.admin },
+      {
+        new: true,
+      }
+    );
+    await user.save();
+    res.status(200).json(user);
+  },
 };

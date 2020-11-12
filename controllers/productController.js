@@ -73,9 +73,7 @@ module.exports = {
       },
       { new: true }
     );
-
     await product.save();
-
     res.status(200).json(product);
   },
 
