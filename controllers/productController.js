@@ -47,7 +47,7 @@ module.exports = {
     await category.update({ $pull: { products: req.params.id } });
     await Product.findByIdAndRemove(req.params.id)
       .then(
-        res.status(200).json("El producto fue eliminado")
+        res.status(200).json(product)
         /*  console.log(product) */
       )
       .catch((err) => {

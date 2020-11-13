@@ -34,6 +34,7 @@ module.exports = {
     await category.save();
     res.status(200).json(category);
   },
+
   delete: async (req, res) => {
     await Product.deleteMany({ category: req.params.id });
     await Category.findByIdAndRemove(req.params.id)
