@@ -36,9 +36,11 @@ module.exports = {
   },
   delete: async (req, res) => {
     await Product.deleteMany({ category: req.params.id });
+    const category = await Category.findById(req.params.id);
+    console.log(category);
     await Category.findByIdAndRemove(req.params.id)
       .then(
-        res.status(200).json("La categoría fue eliminada")
+        res.status(200).json(category)
         /*  console.log(product) */
       )
       .catch((err) => {
