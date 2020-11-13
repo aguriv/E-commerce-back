@@ -6,6 +6,11 @@ module.exports = {
     res.json(products);
   },
 
+  listProduct: async (req, res) => {
+    const oneProduct = await Product.findOne({ _id: req.params });
+    res.json(oneProduct);
+  },
+
   saveProduct: async (req, res) => {
     const category = await Category.findOne({ name: req.body.category });
     if (category !== null) {
