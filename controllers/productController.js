@@ -11,6 +11,11 @@ module.exports = {
     res.json(oneProduct);
   },
 
+  oneProduct: async (req, res) => {
+    const product = await Product.findOne(req.params).populate("category");
+    res.json(product);
+  },
+
   saveProduct: async (req, res) => {
     const category = await Category.findOne({ name: req.body.category });
     if (category !== null) {
