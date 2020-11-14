@@ -19,5 +19,5 @@ module.exports = function publicRoutes(app) {
 
   /* RUTAS PRODUCTS */
   app.get("/api/v1/products", productController.listProducts);
-  app.get("/api/v1/:slug", productController.oneProduct);
+  app.get("/api/v1/product/:slug", productController.oneProduct);
 };
