@@ -5,14 +5,14 @@ module.exports = (mongoose, Schema) => {
   const UserSchema = new Schema({
     name: { type: String, required: true },
     lastname: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
     username: { type: String },
     password: { type: String, required: true },
     tokens: [],
     address: { type: String },
     phone: { type: String },
     orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
-    admin: { type: Boolean },
+    admin: { type: Boolean, default: false },
   });
 
   UserSchema.pre("save", function (next) {
