@@ -4,9 +4,9 @@ mongoose.connect(
   `mongodb+srv://root:${process.env.DB_PASSWORD}@cluster0.uxv9g.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`
 );
 mongoose.set("useFindAndModify", false);
-const UserModel = require("./userModel");
-const ProductModel = require("./ProductModel");
-const CategoryModel = require("./CategoryModel");
+const UserModel = require("./User");
+const ProductModel = require("./Product");
+const CategoryModel = require("./Category");
 const { Seed } = require("../seeder");
 
 const User = UserModel(mongoose, Schema);
@@ -25,5 +25,5 @@ module.exports = {
   Product,
   Category,
 };
-
-/* Seed(mongoose, User, Tweet); */
+/* 
+Seed(mongoose, User); */
