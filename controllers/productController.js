@@ -8,6 +8,7 @@ module.exports = {
 
   listProduct: async (req, res) => {
     const oneProduct = await Product.findOne({ _id: req.params });
+    console.log("oneProduct:", oneProduct);
     res.json(oneProduct);
   },
 
