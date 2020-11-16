@@ -3,6 +3,7 @@ const jwt = require("express-jwt");
 const categoryController = require("../controllers/categoryController");
 const productController = require("../controllers/productController");
 const userController = require("../controllers/userController");
+const orderController = require("../controllers/orderController");
 
 module.exports = function privateRoutes(app) {
   /* RUTAS CATEGORY */
@@ -24,4 +25,7 @@ module.exports = function privateRoutes(app) {
   app.get("/api/v1/users", userController.list);
   app.delete("/api/v1/users/:id", userController.delete);
   app.put("/api/v1/users/:id", userController.update);
+
+  /*RUTAS ORDERS */
+  app.get("/api/v1/orders", orderController.list);
 };

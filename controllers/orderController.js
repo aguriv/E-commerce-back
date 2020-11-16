@@ -9,6 +9,11 @@ module.exports = {
     });
     orders.save();
   },
+
+  list: async (req, res) => {
+    const orders = await Order.find().populate("products");
+    res.json(orders);
+  },
   /* saveCategory: async (req, res) => {
     const category = await new Category({
       name: req.body.name,
