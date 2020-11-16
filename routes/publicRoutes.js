@@ -2,6 +2,7 @@ const jwt = require("express-jwt");
 
 const productController = require("../controllers/productController");
 const categoryController = require("../controllers/categoryController");
+const orderController = require("../controllers/orderController");
 
 module.exports = function publicRoutes(app) {
   /* RUTAS LOGIN Y REGISTER */
@@ -20,4 +21,7 @@ module.exports = function publicRoutes(app) {
   /* RUTAS PRODUCTS */
   app.get("/api/v1/products", productController.listProducts);
   app.get("/api/v1/product/:slug", productController.oneProduct);
+
+  /*RUTAS ORDERS*/
+  app.post("/api/v1/orders", orderController.userOrder);
 };
