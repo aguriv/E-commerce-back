@@ -11,7 +11,7 @@ module.exports = {
   },
 
   list: async (req, res) => {
-    const orders = await Order.find().populate("products");
+    const orders = await Order.find({}).populate("products").populate("buyer");
     res.json(orders);
   },
   /* saveCategory: async (req, res) => {
