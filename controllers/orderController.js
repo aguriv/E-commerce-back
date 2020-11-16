@@ -14,6 +14,7 @@ module.exports = {
     const orders = await Order.find({}).populate("products").populate("buyer");
     res.json(orders);
   },
+
   /* saveCategory: async (req, res) => {
     const category = await new Category({
       name: req.body.name,
