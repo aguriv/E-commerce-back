@@ -23,5 +23,5 @@ module.exports = function publicRoutes(app) {
   app.get("/api/v1/product/:slug", productController.oneProduct);
 
   /*RUTAS ORDERS*/
-  app.post("/api/v1/orders", orderController.userOrder);
+  /*   app.post("/api/v1/orders/:slug", orderController.userOrder); */
 };

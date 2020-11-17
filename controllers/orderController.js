@@ -1,19 +1,29 @@
 const { Order, Product, User } = require("../db");
 
 module.exports = {
-  userOrder: async (req, res) => {
-    const orders = await new Order({
-      products: [] /*product.id*/,
-      buyer: req.body.buyer /* user.id o token */,
-      orderState: req.body.orderState,
-    });
-    orders.save();
-  },
-
   list: async (req, res) => {
     const orders = await Order.find({}).populate("products").populate("buyer");
     res.json(orders);
   },
+
+  /*   userOrder: async (req, res) => {
+    const product = Product.find({ slug: req.params });
+
+    const order = await new Order({
+      products: [product],
+      buyer: req.body.buyer ,
+      orderState: req.body.orderState,
+    });
+    order
+      .save()
+      .then(res.status(200).json(category))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({
+          error: err,
+        });
+      });
+  }, */
 
   /* saveCategory: async (req, res) => {
     const category = await new Category({
