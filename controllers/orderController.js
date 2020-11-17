@@ -5,25 +5,24 @@ module.exports = {
     const orders = await Order.find({}).populate("products").populate("buyer");
     res.json(orders);
   },
-
-  /*   userOrder: async (req, res) => {
-    const product = Product.find({ slug: req.params });
-
-    const order = await new Order({
-      products: [product],
-      buyer: req.body.buyer ,
-      orderState: req.body.orderState,
+  userOrder: async (req, res) => {
+    const user = User.findById(req.user._id);
+    const orders = await new Order({
+      cart: req.body.cart,
+      buyer: req.body.user,
+      totalPrice: req.body.totalPrice,
+      orderState: 11,
     });
-    order
+    orders
       .save()
-      .then(res.status(200).json(category))
+      .then(res.status(200).json(orders))
       .catch((err) => {
         console.log(err);
         res.status(400).json({
           error: err,
         });
       });
-  }, */
+  },
 
   /* saveCategory: async (req, res) => {
     const category = await new Category({
