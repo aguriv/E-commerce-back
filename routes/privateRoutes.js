@@ -29,4 +29,5 @@ module.exports = function privateRoutes(app) {
   /*RUTAS ORDERS */
   app.get("/api/v1/orders", orderController.list);
   app.post("/api/v1/order", orderController.userOrder);
+  app.put("/api/v1/order/:id", orderController.update);
 };

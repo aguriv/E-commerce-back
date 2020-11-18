@@ -24,4 +24,16 @@ module.exports = {
     });
     res.json(orders);
   },
+
+  update: async (req, res) => {
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      {
+        orderState: req.body.orderState,
+      },
+      { new: true }
+    );
+    await order.save();
+    res.status(200).json(order);
+  },
 };
