@@ -12,7 +12,7 @@ module.exports = {
       cart: req.body.cart,
       buyer: req.user.sub,
       totalPrice: req.body.totalPrice,
-      orderState: "no pago",
+      orderState: 11,
     });
     orders
       .save()
@@ -23,6 +23,18 @@ module.exports = {
           error: err,
         });
       });
+  },
+
+  update: async (req, res) => {
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      {
+        orderState: req.body.orderState,
+      },
+      { new: true }
+    );
+    await order.save();
+    res.status(200).json(order);
   },
 
   /* saveCategory: async (req, res) => {
