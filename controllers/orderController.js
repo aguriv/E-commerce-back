@@ -11,7 +11,7 @@ module.exports = {
       cart: req.body.cart,
       buyer: req.user.sub,
       totalPrice: req.body.totalPrice,
-      orderState: 11,
+      orderState: "no pago",
     });
     order.save();
     order.cart.forEach(async (e) => {

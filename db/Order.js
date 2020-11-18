@@ -14,7 +14,7 @@ module.exports = (mongoose, Schema) => {
         quantity: { type: Number },
       },
     ],
-    orderState: { type: Number, required: true },
+    orderState: { type: String, required: true },
     totalPrice: { type: Number, required: true },
     createdAt: { type: Date, default: Date.now },
   });
