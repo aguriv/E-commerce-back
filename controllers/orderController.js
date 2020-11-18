@@ -6,12 +6,13 @@ module.exports = {
     res.json(orders);
   },
   userOrder: async (req, res) => {
-    const user = User.findById(req.user._id);
+    //const user = User.findById(req.user.sub);
+
     const orders = await new Order({
       cart: req.body.cart,
-      buyer: req.body.user,
+      buyer: req.user.sub,
       totalPrice: req.body.totalPrice,
-      orderState: 11,
+      orderState: "no pago",
     });
     orders
       .save()
