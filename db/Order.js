@@ -9,6 +9,7 @@ module.exports = (mongoose, Schema) => {
           name: { type: String, required: true, maxlength: 140 },
           price: { type: Number, required: true },
           _id: { type: String },
+          stock: { type: Number },
         },
         quantity: { type: Number },
       },
