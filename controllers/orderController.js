@@ -7,22 +7,22 @@ module.exports = {
   },
   userOrder: async (req, res) => {
     const product = Product.find({ slug: req.body.cart });
-    const orders = await new Order({
+    const order = await new Order({
       cart: req.body.cart,
       buyer: req.user.sub,
       totalPrice: req.body.totalPrice,
       orderState: 11,
     });
-    orders.save();
-    orders.cart.forEach(async (e) => {
-      let productUpdated = Product.findById(e.product._id);
+    order.save();
+    order.cart.forEach(async (e) => {
+      let productUpdated = await Product.findById(e.product._id);
       console.log(productUpdated);
-      if (await productUpdated) {
-        return (productUpdated.stock = productUpdated.stock - e.quantity);
+      if (productUpdated) {
+        productUpdated.stock = productUpdated.stock - e.quantity;
+        productUpdated.save();
       }
-      productUpdated.save();
     });
-    res.json(orders);
+    res.json(order);
   },
 
   update: async (req, res) => {
