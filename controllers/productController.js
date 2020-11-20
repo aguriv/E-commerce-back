@@ -19,6 +19,7 @@ module.exports = {
 
   saveProduct: async (req, res) => {
     const category = await Category.findOne({ name: req.body.category });
+    await console.log(category);
     if (category !== null) {
       const product = await new Product({
         name: req.body.name,
@@ -27,7 +28,7 @@ module.exports = {
         price: req.body.price,
         stock: req.body.stock,
         category: category,
-        featured: req.body.featured,
+        featured: req.body.featured === "true" ? true : false,
         slug: req.body.slug,
         addedBy: req.body.addedBy,
       });
@@ -78,7 +79,7 @@ module.exports = {
         image: req.body.image,
         price: req.body.price,
         stock: req.body.stock,
-        featured: req.body.featured,
+        featured: req.body.featured === "true" ? true : false,
         slug: req.body.slug,
         addedBy: req.body.addedBy,
       },
