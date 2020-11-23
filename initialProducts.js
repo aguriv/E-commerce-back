@@ -19,7 +19,7 @@ const productsCleaning = [
     price: 20,
     stock: 4,
 
-    feature: false,
+    featured: false,
     slug: "aspiradora-robot",
   },
   {
@@ -31,7 +31,7 @@ const productsCleaning = [
     price: 30,
     stock: 3,
 
-    feature: false,
+    featured: false,
     slug: "enceradora-roja",
   },
 ];
@@ -44,7 +44,7 @@ const productsImage = [
     price: 40,
     stock: 4,
 
-    feature: true,
+    featured: true,
     slug: "tv-smart-led",
   },
   {
@@ -55,7 +55,7 @@ const productsImage = [
     price: 5,
     stock: 10,
 
-    feature: false,
+    featured: false,
     slug: "radio-de-bolsillo",
   },
 
@@ -67,7 +67,7 @@ const productsImage = [
     price: 50,
     stock: 2,
 
-    feature: false,
+    featured: false,
     slug: "camara-nikon",
   },
 ];
@@ -81,7 +81,7 @@ const productsOthers = [
     price: 21,
     stock: 2,
 
-    feature: true,
+    featured: true,
     slug: "respaldo-masajeador-bronx",
   },
 
@@ -93,7 +93,7 @@ const productsOthers = [
     price: 28,
     stock: 3,
 
-    feature: true,
+    featured: true,
     slug: "bordeadora-desmalezadora-amarilla",
   },
 
@@ -106,11 +106,11 @@ const productsOthers = [
     price: 41,
     stock: 7,
 
-    feature: true,
+    featured: true,
     slug: "maquina-de-coser-blanca-y-turquesa",
   },
 ];
-const productsClimatizacion = [
+const productsHeating = [
   {
     name: "Calefactor  NSB-200A",
     description:
@@ -120,7 +120,7 @@ const productsClimatizacion = [
     price: 35,
     stock: 3,
 
-    feature: false,
+    featured: false,
     slug: "calefactor-ventilador",
   },
   {
@@ -132,7 +132,7 @@ const productsClimatizacion = [
     price: 48,
     stock: 9,
 
-    feature: false,
+    featured: false,
     slug: "ventilador-de-techo",
   },
 
@@ -145,7 +145,7 @@ const productsClimatizacion = [
     price: 14,
     stock: 7,
 
-    feature: true,
+    featured: true,
     slug: "aire-acondicionado",
   },
 ];
@@ -154,5 +154,5 @@ module.exports = {
   productsCleaning,
   productsImage,
   productsOthers,
-  productsClimatizacion,
+  productsHeating,
 };
