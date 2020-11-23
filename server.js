@@ -6,7 +6,6 @@ const path = require("path");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const userRoutes = require("./routes/userRoutes");
 const publicRoutes = require("./routes/publicRoutes");
 const privateRoutes = require("./routes/privateRoutes");
 
@@ -26,7 +25,6 @@ app.use(
   })
 );
 
-userRoutes(app);
 publicRoutes(app);
 privateRoutes(app);
 
