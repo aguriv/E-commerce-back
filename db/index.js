@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-mongoose.connect(
-  `mongodb+srv://root:${process.env.DB_PASSWORD}@cluster0.uxv9g.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.DB_CONNECTION_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.set("useFindAndModify", false);
 const UserModel = require("./User");
 const ProductModel = require("./Product");
 const CategoryModel = require("./Category");
 const OrderModel = require("./Order");
-const { Seed } = require("../seeder");
 
 const User = UserModel(mongoose, Schema);
 const Product = ProductModel(mongoose, Schema);
@@ -28,6 +27,5 @@ module.exports = {
   Product,
   Category,
   Order,
+  db,
 };
-/* 
-Seed(mongoose, User); */

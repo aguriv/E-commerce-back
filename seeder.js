@@ -1,19 +1,24 @@
-const faker = require("faker");
+const { Category, Product, db } = require("./db");
+const {
+  productsCleaning,
+  productsImage,
+  productsOthers,
+  productsClimatizacion,
+} = require("./initialProducts");
 
-const Seed = (mongoose, User) => {
-  for (let i = 0; i < 5; i++) {
-    const user = new User({
-      name: faker.name.firstName(),
-      lastname: faker.name.lastName(),
-      email: faker.internet.email(),
-      username: faker.internet.userName(),
-      password: "admin123",
-      tokens: [],
-      address: faker.address.streetAddress(),
-      phone: faker.phone.phoneNumber(),
-      orders: [],
-    });
-  }
+const seeder = async () => {
+  await db.dropDatabase();
+  const category = new Category({
+    name: "Cleaning",
+    slug: "Cleaning",
+  });
+  /* await category.save(); */
+  productsCleaning.forEach((product) => {
+    product.category = category;
+  });
+  const insertedProducts = await Product.insertMany(productsCleaning);
+  category.products = insertedProducts;
+  await category.save();
 };
 
-module.exports = { Seed };
+module.exports = seeder;

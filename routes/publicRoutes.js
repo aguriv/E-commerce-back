@@ -1,9 +1,8 @@
-const jwt = require("express-jwt");
-
 const productController = require("../controllers/productController");
 const categoryController = require("../controllers/categoryController");
 const orderController = require("../controllers/orderController");
 const userController = require("../controllers/userController");
+const seeder = require("../seeder");
 
 module.exports = function publicRoutes(app) {
   /* RUTAS LOGIN Y REGISTER */
@@ -20,4 +19,10 @@ module.exports = function publicRoutes(app) {
   app.get("/api/v1/product/:slug", productController.oneProduct);
 
   /*RUTAS ORDERS*/
+
+  /*SEEDER*/
+  app.get("/seeder", async (req, res) => {
+    await seeder();
+    return res.send("Seeder ejecutado");
+  });
 };

@@ -1,4 +1,4 @@
-const products = [
+const productsCleaning = [
   {
     name: "Lavarropas",
     description:
@@ -7,7 +7,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/190982/ppal-desktop-1x.jpg",
     price: 10,
     stock: 5,
-    category: "Limpieza",
+
     featured: true,
     slug: "lavarropas-blanco",
   },
@@ -18,7 +18,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/10735/ppal-desktop-1x.jpg",
     price: 20,
     stock: 4,
-    category: "Limpieza",
+
     feature: false,
     slug: "aspiradora-robot",
   },
@@ -30,10 +30,12 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/51445/ppal-desktop-1x.jpg",
     price: 30,
     stock: 3,
-    category: "Limpieza",
+
     feature: false,
     slug: "enceradora-roja",
   },
+];
+const productsImage = [
   {
     name: "TV Smart LED",
     description: "TV & Monitor Smart LED con conexión a internet",
@@ -41,7 +43,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/201156/ppal-desktop-1x.jpg",
     price: 40,
     stock: 4,
-    category: "Imagen y sonido",
+
     feature: true,
     slug: "tv-smart-led",
   },
@@ -52,7 +54,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/188419/ppal-mobile-1x.jpg",
     price: 5,
     stock: 10,
-    category: "Imagen y sonido",
+
     feature: false,
     slug: "radio-de-bolsillo",
   },
@@ -64,50 +66,12 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/33135/ppal-mobile-1x.jpg",
     price: 50,
     stock: 2,
-    category: "Imagen y sonido",
+
     feature: false,
     slug: "camara-nikon",
   },
-
-  {
-    name: "Calefactor  NSB-200A",
-    description:
-      "Calo-ventilador, frío y calor. Gasta un montón, ni lo compre.",
-    image:
-      "https://api.carlosgutierrez.com.uy/fotos/fotos/53138/ppal-mobile-1x.jpg",
-    price: 35,
-    stock: 3,
-    category: "Climatización",
-    feature: false,
-    slug: "calefactor-ventilador",
-  },
-
-  {
-    name: "Ventilador de techo",
-    description:
-      "Ventilador de techo blanco con tres velocidades y aspas de metal.",
-    image:
-      "https://api.carlosgutierrez.com.uy/fotos/fotos/220799/ppal-mobile-1x.jpg",
-    price: 48,
-    stock: 9,
-    category: "Climatización",
-    feature: false,
-    slug: "ventilador-de-techo",
-  },
-
-  {
-    name: "Aire acondicionado INV",
-    description:
-      "Incluye 4 metros de caños y control remoto con termómetro digital.",
-    image:
-      "https://api.carlosgutierrez.com.uy/fotos/fotos/20388/ppal-desktop-1x.jpg",
-    price: 14,
-    stock: 7,
-    category: "Climatización",
-    feature: true,
-    slug: "aire-acondicionado",
-  },
-
+];
+const productsOthers = [
   {
     name: "Respaldo Masajeador",
     description:
@@ -116,7 +80,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/132110/ppal-desktop-1x.jpg",
     price: 21,
     stock: 2,
-    category: "Otros",
+
     feature: true,
     slug: "respaldo-masajeador-bronx",
   },
@@ -128,7 +92,7 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/32483/ppal-desktop-1x.jpg",
     price: 28,
     stock: 3,
-    category: "Otros",
+
     feature: true,
     slug: "bordeadora-desmalezadora-amarilla",
   },
@@ -141,8 +105,54 @@ const products = [
       "https://api.carlosgutierrez.com.uy/fotos/fotos/131605/ppal-desktop-1x.jpg",
     price: 41,
     stock: 7,
-    category: "Otros",
+
     feature: true,
     slug: "maquina-de-coser-blanca-y-turquesa",
   },
 ];
+const productsClimatizacion = [
+  {
+    name: "Calefactor  NSB-200A",
+    description:
+      "Calo-ventilador, frío y calor. Gasta un montón, ni lo compre.",
+    image:
+      "https://api.carlosgutierrez.com.uy/fotos/fotos/53138/ppal-mobile-1x.jpg",
+    price: 35,
+    stock: 3,
+
+    feature: false,
+    slug: "calefactor-ventilador",
+  },
+  {
+    name: "Ventilador de techo",
+    description:
+      "Ventilador de techo blanco con tres velocidades y aspas de metal.",
+    image:
+      "https://api.carlosgutierrez.com.uy/fotos/fotos/220799/ppal-mobile-1x.jpg",
+    price: 48,
+    stock: 9,
+
+    feature: false,
+    slug: "ventilador-de-techo",
+  },
+
+  {
+    name: "Aire acondicionado INV",
+    description:
+      "Incluye 4 metros de caños y control remoto con termómetro digital.",
+    image:
+      "https://api.carlosgutierrez.com.uy/fotos/fotos/20388/ppal-desktop-1x.jpg",
+    price: 14,
+    stock: 7,
+
+    feature: true,
+    slug: "aire-acondicionado",
+  },
+];
+
+module.exports = {
+  productsCleaning,
+  productsImage,
+  productsOthers,
+  productsClimatizacion,
+};

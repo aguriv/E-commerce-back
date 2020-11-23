@@ -14,7 +14,6 @@ module.exports = function privateRoutes(app) {
   app.put("/api/v1/categories/:id", categoryController.update);
 
   /* RUTAS PRODUCTS */
-  app.use(jwt({ secret: process.env.JWT_SECRET, algorithms: ["HS256"] }));
 
   app.post("/api/v1/products", productController.saveProduct);
   app.delete("/api/v1/products/:id", productController.delete);
