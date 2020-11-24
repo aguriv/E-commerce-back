@@ -87,4 +87,20 @@ module.exports = {
     await user.save();
     res.status(200).json(user);
   },
+  userUpdate: async (req, res) => {
+    const user = await User.findByIdAndUpdate(
+      req.user.sub,
+      {
+        name: req.body.name,
+        lastname: req.body.lastname,
+        address: req.body.address,
+        phone: req.body.phone,
+      },
+      {
+        new: true,
+      }
+    );
+    await user.save();
+    res.status(200).json(user);
+  },
 };
