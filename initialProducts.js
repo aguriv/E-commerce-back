@@ -19,7 +19,7 @@ const productsCleaning = [
     price: 20,
     stock: 4,
 
-    featured: false,
+    featured: true,
     slug: "aspiradora-robot",
   },
   {
@@ -55,7 +55,7 @@ const productsImage = [
     price: 5,
     stock: 10,
 
-    featured: false,
+    featured: true,
     slug: "radio-de-bolsillo",
   },
 
@@ -67,7 +67,7 @@ const productsImage = [
     price: 50,
     stock: 2,
 
-    featured: false,
+    featured: true,
     slug: "camara-nikon",
   },
 ];
@@ -93,7 +93,7 @@ const productsOthers = [
     price: 28,
     stock: 3,
 
-    featured: true,
+    featured: false,
     slug: "bordeadora-desmalezadora-amarilla",
   },
 
