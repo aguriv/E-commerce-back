@@ -24,6 +24,7 @@ module.exports = function privateRoutes(app) {
   app.get("/api/v1/users", userController.list);
   app.delete("/api/v1/users/:id", userController.delete);
   app.put("/api/v1/users/:id", userController.update);
+  app.put("/api/v1/resetpassword", userController.resetPassword);
 
   /*RUTAS ORDERS */
   app.get("/api/v1/orders", orderController.list);

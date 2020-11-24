@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../db");
+const bcrypt = require("bcryptjs");
 
 const createToken = (user) => {
   return jwt.sign({ sub: user }, process.env.JWT_SECRET);
@@ -86,5 +87,34 @@ module.exports = {
     );
     await user.save();
     res.status(200).json(user);
+  },
+
+  resetPassword: async (req, res) => {
+    console.log("llego");
+    console.log(req.body.actualPassword);
+    console.log(req.body.newPassword);
+
+    const oldPassUser = await User.findById(req.user.sub);
+
+    const sonIguales = await bcrypt.compare(
+      req.body.actualPassword,
+      oldPassUser.password
+    );
+
+    await console.log(sonIguales);
+
+    const newHashedPass = await bcrypt.hashSync(req.body.newPassword, 10);
+
+    if (sonIguales) {
+      console.log("son iguales");
+      const user = await User.findByIdAndUpdate(req.user.sub, {
+        password: newHashedPass,
+      });
+      await user.save();
+      res.status(200).json(user);
+    } else {
+      console.log("no son iguales");
+      res.status(404).send("Contraseña incorrecta");
+    }
   },
 };
