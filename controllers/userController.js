@@ -116,6 +116,8 @@ module.exports = {
       console.log("no son iguales");
       res.status(404).send("Contraseña incorrecta");
     }
+  },
+
   userUpdate: async (req, res) => {
     const user = await User.findByIdAndUpdate(
       req.user.sub,
