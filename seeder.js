@@ -64,7 +64,7 @@ const seeder = async () => {
     password: "root",
     tokens: [],
     address: "Colonia 1234",
-    phone: "+598 29000000",
+    phone: "29000000",
     orders: [],
     admin: true,
   });
@@ -78,7 +78,7 @@ const seeder = async () => {
     password: "root",
     tokens: [],
     address: "Colonia 1235",
-    phone: "+598 29000001",
+    phone: "29000001",
     orders: [],
     admin: false,
   });

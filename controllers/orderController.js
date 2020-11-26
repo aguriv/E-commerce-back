@@ -2,14 +2,15 @@ const { Order, Product, User } = require("../db");
 
 module.exports = {
   list: async (req, res) => {
-    const orders = await Order.find({}).populate("products").populate("buyer");
+    const orders = await Order.find({}).populate("products");
     res.json(orders);
   },
   userOrder: async (req, res) => {
     const product = Product.find({ slug: req.body.cart });
+    console.log(req.user);
     const order = await new Order({
       cart: req.body.cart,
-      buyer: req.user.sub,
+      buyer: req.body.buyer,
       totalPrice: req.body.totalPrice,
       orderState: "No pago",
     });

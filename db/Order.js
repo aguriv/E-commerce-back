@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 
 module.exports = (mongoose, Schema) => {
   const OrderSchema = new Schema({
-    buyer: { type: Schema.Types.ObjectId, ref: "User" },
+    buyer: { type: String, required: true },
     cart: [
       {
         product: {
