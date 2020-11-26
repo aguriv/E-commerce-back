@@ -19,6 +19,21 @@ module.exports = (mongoose, Schema) => {
     createdAt: { type: Date, default: Date.now },
   });
 
+  OrderSchema.pre("save", function (next) {
+    console.log("entro");
+    console.log(this);
+
+    if (this.cart.length !== 0) {
+      console.log("cart mayor que cero");
+
+      next();
+    } else {
+      console.log("cart menor que cero");
+
+      next(new Error("El usuario intentó hacer una compra sin producto"));
+    }
+  });
+
   const Order = mongoose.model("Order", OrderSchema);
 
   return Order;
